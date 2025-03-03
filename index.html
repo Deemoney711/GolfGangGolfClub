@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golfgang Membership App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        #exclusiveContent {
+            border-left: 4px solid #4CAF50;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Golfgang</div>
+    </div>
+    
+    <div class="container">
+        <h2>Connect Wallet</h2>
+        <button id="connectButton">Connect Wallet</button>
+        <div id="walletInfo" style="margin-top: 10px;"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Membership Status</h2>
+        <div id="membershipStatus">Connect wallet to check membership</div>
+    </div>
+    
+    <div class="container">
+        <h2>Exclusive Member Benefits</h2>
+        <div id="exclusiveContent">
+            <p><strong>Welcome to Golfgang exclusive benefits:</strong></p>
+            <ul>
+                <li>Priority tee times at partner golf courses</li>
+                <li>20% discount on official Golfgang merchandise</li>
+                <li>Access to member-only tournaments</li>
+                <li>Monthly golf clinics with PGA professionals</li>
+                <li>Special offers from our partners</li>
+            </ul>
+            <p><button style="background-color: #2196F3;">Browse Member Shop</button></p>
+        </div>
+    </div>
+
+    <!-- Include Solana Web3 from CDN -->
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    
+    <!-- Include your app logic -->
+    <script src="app.js"></script>
+</body>
+</html>
