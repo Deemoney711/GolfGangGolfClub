@@ -1,10 +1,10 @@
-// app.js - Frontend integration code
 document.addEventListener('DOMContentLoaded', () => {
     // Your actual Golfgang collection address
     const golfgangCollection = "175348331c7bf1aca8ef809f8a25b09de6d8333cee03a369dc83f4da5c104c65";
     
     // Elements
     const connectButton = document.getElementById('connectButton');
+    const disconnectButton = document.getElementById('disconnectButton');
     const walletInfo = document.getElementById('walletInfo');
     const membershipStatus = document.getElementById('membershipStatus');
     const exclusiveContent = document.getElementById('exclusiveContent');
@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         walletInfo.textContent = `Connected: ${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`;
         connectButton.textContent = 'Wallet Connected';
         
+        // Show disconnect button
+        disconnectButton.style.display = 'inline-block';
+        
         // Check membership
         membershipStatus.textContent = 'Checking membership status...';
         
@@ -47,6 +50,27 @@ document.addEventListener('DOMContentLoaded', () => {
         walletInfo.textContent = 'Connection failed: ' + error.message;
         connectButton.disabled = false;
         connectButton.textContent = 'Connect Wallet';
+      }
+    });
+    
+    // Disconnect from wallet
+    disconnectButton.addEventListener('click', async () => {
+      try {
+        // Disconnect from Phantom
+        await window.solana.disconnect();
+        
+        // Update UI
+        connectButton.disabled = false;
+        connectButton.textContent = 'Connect Wallet';
+        disconnectButton.style.display = 'none';
+        walletInfo.textContent = 'Wallet disconnected';
+        membershipStatus.textContent = 'Connect wallet to check membership';
+        membershipStatus.style.color = '';
+        exclusiveContent.style.display = 'none';
+        
+      } catch (error) {
+        console.error(error);
+        walletInfo.textContent = 'Disconnection failed: ' + error.message;
       }
     });
     
